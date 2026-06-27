@@ -1,0 +1,209 @@
+{
+  "collections": {
+    "mantenimiento_hogar.clientes": {
+      "ns": "mantenimiento_hogar.clientes",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "activo",
+          "direcciones",
+          "email",
+          "fecha_alta",
+          "nombre",
+          "telefono"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "activo": {
+            "bsonType": "bool"
+          },
+          "direcciones": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "calle": {
+                  "bsonType": "string"
+                },
+                "ciudad": {
+                  "bsonType": "string"
+                },
+                "etiqueta": {
+                  "bsonType": "string"
+                }
+              },
+              "required": [
+                "calle",
+                "ciudad",
+                "etiqueta"
+              ]
+            }
+          },
+          "email": {
+            "bsonType": "string"
+          },
+          "fecha_alta": {
+            "bsonType": "date"
+          },
+          "nombre": {
+            "bsonType": "string"
+          },
+          "telefono": {
+            "bsonType": "string"
+          }
+        }
+      }
+    },
+    "mantenimiento_hogar.profesionales": {
+      "ns": "mantenimiento_hogar.profesionales",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "activo",
+          "especialidades",
+          "fecha_alta",
+          "matricula",
+          "nombre",
+          "reputacion_promedio",
+          "zona_cobertura"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "activo": {
+            "bsonType": "bool"
+          },
+          "especialidades": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "fecha_alta": {
+            "bsonType": "date"
+          },
+          "matricula": {
+            "bsonType": "string"
+          },
+          "nombre": {
+            "bsonType": "string"
+          },
+          "reputacion_promedio": {
+            "bsonType": "double"
+          },
+          "zona_cobertura": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          }
+        }
+      }
+    },
+    "mantenimiento_hogar.trabajos": {
+      "ns": "mantenimiento_hogar.trabajos",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "activo",
+          "cliente_id",
+          "descripcion",
+          "direccion_servicio",
+          "estado",
+          "precio_acordado",
+          "profesional_id"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "activo": {
+            "bsonType": "bool"
+          },
+          "cliente_id": {
+            "bsonType": "objectId"
+          },
+          "descripcion": {
+            "bsonType": "string"
+          },
+          "direccion_servicio": {
+            "bsonType": "object",
+            "properties": {
+              "calle": {
+                "bsonType": "string"
+              },
+              "ciudad": {
+                "bsonType": "string"
+              }
+            },
+            "required": [
+              "calle",
+              "ciudad"
+            ],
+            "expanded": true
+          },
+          "estado": {
+            "bsonType": "string"
+          },
+          "fecha_finalizacion": {
+            "bsonType": "date"
+          },
+          "precio_acordado": {
+            "bsonType": "int"
+          },
+          "profesional_id": {
+            "bsonType": "objectId"
+          }
+        }
+      }
+    }
+  },
+  "relationships": [
+    {
+      "id": "05d86bf7-4be5-45cb-824b-23eef446e66c",
+      "relationship": [
+        {
+          "ns": "mantenimiento_hogar.trabajos",
+          "cardinality": 1,
+          "fields": [
+            "cliente_id"
+          ]
+        },
+        {
+          "ns": "mantenimiento_hogar.clientes",
+          "cardinality": 1,
+          "fields": [
+            "_id"
+          ]
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "08473669-4cdb-4ff5-abbf-8185b6f3f04c",
+      "relationship": [
+        {
+          "ns": "mantenimiento_hogar.trabajos",
+          "cardinality": 1,
+          "fields": [
+            "profesional_id"
+          ]
+        },
+        {
+          "ns": "mantenimiento_hogar.profesionales",
+          "cardinality": 1,
+          "fields": [
+            "_id"
+          ]
+        }
+      ],
+      "isInferred": true
+    }
+  ]
+}
