@@ -8,7 +8,7 @@
 ---
 
 ### Descripción
-Ejercicio que continua el desarrollo de una base NoSQL con mongoDB de la Parte 1 del TPI con la integración de pperaciones CRUD desde una aplicación externa y backups locales de la base de datos en un cluster Atlas.
+Ejercicio que continua el desarrollo de una base NoSQL con mongoDB de la Parte 1 del TPI con la integración de operaciones CRUD desde una aplicación externa y backups locales de la base de datos en un cluster Atlas.
 
 
 #### Bloque 1: Operaciones CRUD desde la Aplicación
@@ -26,10 +26,10 @@ Se desarrollaron scripts para Linux y Windows que permiten descargar (mongodump)
 
 - Tener instalado Node.js
 - Correr la aplicacion por su nombre desde la terminal del IDE utilizado.
-  (ejemplo con npn)
-  npm init --init-type module -y
-  npm install mongodb
-  node CRUD_DriverNativo.js
+  - (ejemplo con npn)
+  - npm init --init-type module -y
+  - npm install mongodb
+  - node CRUD_DriverNativo.js
 
 #### Para mecanismo de Backups y Resguardo
 
